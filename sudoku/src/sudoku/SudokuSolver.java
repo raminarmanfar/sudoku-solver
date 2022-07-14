@@ -14,17 +14,18 @@ public class SudokuSolver {
 
     private int[][] generateRandomBoard() {
         return new int[][] {
-                {7, 0, 2, 0, 5, 0, 6, 0, 0},
-                {0, 0, 0, 0, 0, 3, 0, 0, 0},
-                {1, 0, 0, 0, 0, 9, 5, 0, 0},
-                {8, 0, 0, 0, 0, 0, 0, 9, 0},
-                {0, 4, 3, 0, 0, 0, 7, 5, 0},
-                {0, 9, 0, 0, 0, 0, 0, 0, 8},
-                {0, 0, 9, 7, 0, 0, 0, 0, 5},
-                {0, 0, 0, 2, 0, 0, 0, 0, 0},
-                {0, 0, 7, 0, 4, 0, 2, 0, 3}
+                { 7, 0, 2, 0, 5, 0, 6, 0, 0 },
+                { 0, 0, 0, 0, 0, 3, 0, 0, 0 },
+                { 1, 0, 0, 0, 0, 9, 5, 0, 0 },
+                { 8, 0, 0, 0, 0, 0, 0, 9, 0 },
+                { 0, 4, 3, 0, 0, 0, 7, 5, 0 },
+                { 0, 9, 0, 0, 0, 0, 0, 0, 8 },
+                { 0, 0, 9, 7, 0, 0, 0, 0, 5 },
+                { 0, 0, 0, 2, 0, 0, 0, 0, 0 },
+                { 0, 0, 7, 0, 4, 0, 2, 0, 3 }
         };
     }
+
     private boolean isNumberInRow(int row, int number) {
         for (int col = 0; col < MAX; col++) {
             if (board[row][col] == number) {
@@ -88,9 +89,15 @@ public class SudokuSolver {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for (int i=0;i<MAX;i++) {
-            for (int j=0;j<MAX;j++) {
-                result.append(board[i][j]).append(", ");
+        for (int row = 0; row < MAX; row++) {
+            if (row % 3 == 0 && row != 0) {
+                result.append("---------------------\n");
+            }
+            for (int col = 0; col < MAX; col++) {
+                if (col % 3 == 0 && col != 0) {
+                    result.append("| ");
+                }
+                result.append(board[row][col]).append(" ");
             }
             result.append("\n");
         }
